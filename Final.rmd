@@ -48,7 +48,7 @@ male_summary <- bind_rows(male_summary, male_column_totals)
 male_summary
 ```
 
-the summary of males shows that the total males are 18392 so lets make a visual representation of it with a barplot 
+the summary of males shows that the total males are 18392 so lets make a visual representation of it with a barplot, 355 of the males have covid whilst 18037 are fine
 
 
 
