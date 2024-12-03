@@ -13,11 +13,17 @@ date: "`r Sys.Date()`"
 require(tidyverse)
 require(tigerstats)
 require(forcats)
-FinalDat <-read.csv(file="finalSumr2024.csv",header=TRUE)
+OldData <-read.csv(file="finalSumr2024.csv",header=TRUE)
 #recode to remove the annoying "X" from the dataframe
-FinalData <- FinalDat  %>% select(-one_of("X"))
+FinalData <- OldData %>% mutate(infected = recode(infected, covid19 = "covid", none = "OK" )) %>% select(-one_of("X"))
 FinalData <- FinalData %>%
 mutate(across(where(is.character), as.factor))
+FinalData$treatment <- relevel(FinalData$treatment,ref="placebo")
+#FinalData$infected <- relevel(FinalData$infected,ref="OK")
+Male = filter(FinalData, sex =="M")
+Female = filter(FinalData, sex =="F")
+Gay = filter(FinalData, LGBTQ =="gay")
+DrugUser = filter(FinalData, DrugUser =="yes")
 ```
 
 # Introduction
@@ -25,6 +31,25 @@ mutate(across(where(is.character), as.factor))
 A new  preventative vaccine (covid921) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of subpopulations tracked. Consider population subgroups by gender( guys and gals), drug use, and sexual orientation. Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine. Structure your report in four sections each devoted to one of the four subgroups, use null and alternative hypothesis statements and correct statistical verbage when referencing p-values in conclusions.
 
 ## Males
+
+### Summary of Males
+
+```{r}
+male_summary <- Male %>%
+  group_by(treatment, infected) %>%
+  summarise(count = n(), .groups = "drop") %>%
+  pivot_wider(names_from = infected, values_from = count, values_fill = 0)
+male_summary <- male_summary %>%
+  mutate(total = rowSums(select(., -treatment)))
+male_column_totals <- male_summary %>%
+  summarise(across(where(is.numeric), sum)) %>%
+  mutate(treatment = "Total")
+male_summary <- bind_rows(male_summary, male_column_totals)
+male_summary
+```
+
+the summary of males shows that the total males are 18392 so lets make a visual representation of it with a barplot 
+
 
 
 ## Females
