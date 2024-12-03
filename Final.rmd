@@ -48,9 +48,39 @@ male_summary <- bind_rows(male_summary, male_column_totals)
 male_summary
 ```
 
-the summary of males shows that the total males are 18392 so lets make a visual representation of it with a barplot, 355 of the males have covid whilst 18037 are fine
+the summary of males shows that the total males are 18392, 355 of the males have covid whilst 18037 are fine so lets make a visual representation of it with a barplot.
 
+### Visual Results
 
+```{r}
+# Bar plot
+
+# Summarize the data for Males by infection status and treatment
+male_summary_data <- Male %>%
+  group_by(infected, treatment) %>%
+  summarize(count = n(), .groups = "drop") %>%
+  mutate(prcnt = count / sum(count))
+
+# Bar plot for count of infected vs treatment
+male_plot_count <- ggplot(male_summary_data, aes(x = infected, y = count, fill = treatment))
+male_plot_count + 
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Number of Males Infected by Treatment",
+       x = "Infection Status", y = "Count of Infected Males") +
+  scale_fill_manual(values = c("placebo" = "gray", "vaccine" = "green")) +
+  theme_minimal()
+
+# Bar plot for percentage of infected vs treatment
+male_plot_percent <- ggplot(male_summary_data, aes(x = infected, y = prcnt * 100, fill = treatment))
+male_plot_percent + 
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Percentage of Males Infected by Treatment",
+       x = "Infection Status", y = "Percentage of Infected Males") +
+  scale_fill_manual(values = c("placebo" = "gray", "vaccine" = "green")) +
+  theme_minimal()
+```
+
+these barplots show us the number of males infected with covid, obvoiusly the males with the vaccine have less covid than the placebo but the results are very much close to eachother but to truly see the results we need a diffrent graph.
 
 ## Females
 
