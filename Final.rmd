@@ -382,6 +382,14 @@ colPerc(table4)
 
 The numerical results show that among the infected drug users, 8.3% received the placebo, while 91.7% received the vaccine. Among those who were not infected, 51.0% took the placebo, and 49.0% took the vaccine. Overall, 0.33% of drug users on the placebo contracted COVID-19, compared to 3.6% on the vaccine, suggesting that the vaccine is associated with a higher infection rate in this group. These findings imply that the vaccine may not be effective in reducing COVID-19 rates among drug users, which is consistent with the bar plots showing higher infection rates in vaccinated drug users.
 
+### Inferential Results
+```{r}
+chisq.test(table4)
+chisqtestGC(table4)
+DrugUserfish <- fisher.test(table4)
+DrugUserfish
+```
 
+The key result to highlight is Fisher's Exact Test, which yielded an extremely small p-value (𝑝=3×10−12p=3×10 −12) or 0.000000000003, suggesting that the observed differences in infection rates between the vaccine and placebo groups are highly unlikely to have occurred by chance. As a result, the null hypothesis, which assumes that infection rates are independent of treatment, is rejected.
 
 # Overall Results and Conclusions
