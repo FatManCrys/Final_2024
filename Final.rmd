@@ -198,7 +198,31 @@ Femalefish
 
 The key result to consider is Fisher's Exact Test, which yielded an extremely small p-value (𝑝=1×10−8p=1×10 −8) or 0.00000001, suggesting that the observed differences in infection rates between the vaccine and placebo groups are highly unlikely to be due to chance. This leads to the rejection of the null hypothesis, which assumed that infection rates were independent of the treatment. The odds ratio of approximately 1.9 indicates that females who received the vaccine were nearly 1.9 times more likely to contract COVID-19 compared to those who received the placebo. These findings imply that the vaccine is ineffective at preventing COVID-19 in females.
 
-## LGBTQ
+```{r}
+# Calculate effectiveness
+female_effect <- Femalefish$p.value / (Femalefish$p.value + 1)
+effectiveness_female <- (1 - 1 / Femalefish$estimate) * 100
+print(effectiveness_female)
+
+# Calculate effectiveness confidence interval
+female_low <- (1 - 1 / Femalefish$conf.int[1]) * 100
+female_hi <- (1 - 1 / Femalefish$conf.int[2]) * 100
+options(digits = 2)
+
+#print 
+female_low
+female_hi
+```
+
+### `r effectiveness_female`% Effectiveness with Confidence Interval: `r female_low`%  to `r female_hi`%
+
+The above analysis examines the effectiveness of the COVID vaccine in females. If the vaccine's effectiveness exceeds 50%, it would be considered effective. However, with a calculated effectiveness of 46.13% and a confidence interval ranging from 32.79% to 56.98%, we conclude that the vaccine is ineffective in reducing infection rates among females.
+
+The null hypothesis (\(H_0\)) assumed the vaccine had no effect on infection rates, while the alternative hypothesis (\(H_A\)) suggested the vaccine reduces infection rates. Given the extremely small p-value from Fisher’s Exact Test and an odds ratio of 1.9, we reject the null hypothesis and accept the alternative, confirming that the vaccine does not significantly reduce infection rates in females.
+
+The odds ratio shows that females who received the vaccine were nearly 1.9 times more likely to contract COVID-19 compared to those who received the placebo. The confidence interval, with a 95% range between 32.79% and 56.98%, further indicates that the vaccine’s impact on females is limited.
+
+
 
 
 
