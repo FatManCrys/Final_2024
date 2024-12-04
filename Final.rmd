@@ -344,4 +344,36 @@ druguser_summary
 
 Here is the information available so far for drug users: there are a total of 3060 drug users, with 60 infected with COVID-19 and 3000 who are not infected. This data alone isn't sufficient to identify a clear trend, so we will now add a bar plot for better visual representation.
 
+### Visual Results
+```{r}
+# Summarize the data for DrugUser by infection status and treatment
+druguser_summary_data <- DrugUser %>%
+  group_by(infected, treatment) %>%
+  summarize(count = n(), .groups = "drop") %>%
+  mutate(prcnt = count / sum(count))
+
+# Bar plot for count of infected vs treatment
+druguser_plot_count <- ggplot(druguser_summary_data, aes(x = infected, y = count, fill = treatment))
+druguser_plot_count + 
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Number of Drug Users Infected by Treatment",
+       x = "Infection Status", y = "Count of Infected Drug Users") +
+  scale_fill_manual(values = c("placebo" = "gray", "vaccine" = "black")) +
+  theme_minimal()
+
+# Bar plot for percentage of infected vs treatment
+druguser_plot_percent <- ggplot(druguser_summary_data, aes(x = infected, y = prcnt * 100, fill = treatment))
+druguser_plot_percent + 
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Percentage of Drug Users Infected by Treatment",
+       x = "Infection Status", y = "Percentage of Infected Drug Users") +
+  scale_fill_manual(values = c("placebo" = "gray", "vaccine" = "black")) +
+  theme_minimal()
+```
+
+The bar plots above display the number of drug users infected with COVID-19. Visually, it appears that drug users who received the vaccine have a higher incidence of COVID-19 compared to those who received the placebo. Although the difference looks significant, a statistical analysis is necessary to determine whether this difference is statistically significant.
+
+
+
+
 # Overall Results and Conclusions
