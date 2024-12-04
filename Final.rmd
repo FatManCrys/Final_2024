@@ -116,6 +116,13 @@ male_low
 male_hi
 ```
 
+### `r effectiveness_male`% Effectiveness with Confidence Interval: `r male_low`%  to `r male_hi`%
+
+The vaccine's effectiveness in males is above 50%, which suggests it is effective. With a calculated effectiveness of 64.48% and a confidence interval ranging from 54.75% to 72.32%, we can confidently conclude that the vaccine helps reduce infection rates among males.
+
+The null hypothesis (\(H_0\)) proposed that the vaccine has no effect on infection rates, while the alternative hypothesis (\(H_A\)) suggested it does. Based on the very small p-value from Fisher's Exact Test and an odds ratio of 2.82, we reject the null hypothesis and accept the alternative. This supports the conclusion that the vaccine is effective in lowering infection rates in males.
+
+The odds ratio shows that males who received the vaccine were nearly 2.8 times more likely to avoid contracting COVID compared to those who took the placebo. The confidence interval, ranging from 54.75% to 72.32%, further strengthens this finding, confirming the vaccine's significant protective effect.
 
 
 ## Females
