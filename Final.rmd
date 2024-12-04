@@ -392,7 +392,7 @@ DrugUserfish
 
 The key result to highlight is Fisher's Exact Test, which yielded an extremely small p-value (𝑝=3×10−12p=3×10 −12) or 0.000000000003, suggesting that the observed differences in infection rates between the vaccine and placebo groups are highly unlikely to have occurred by chance. As a result, the null hypothesis, which assumes that infection rates are independent of treatment, is rejected.
 
-The odds ratio is approximately 0.087, suggesting that drug users who received the vaccine were 11.5 times less likely to contract COVID-19 compared to those who received the placebo. These findings indicate that the vaccine is highly effective at preventing COVID-19 in drug users, which is consistent with the numerical results showing lower infection rates among vaccinated individuals in this group.
+The odds ratio is approximately 0.087, suggesting that drug users who received the vaccine were 11.5 times less likely to contract COVID-19 compared to those who received the placebo. These findings indicate that the vaccine is highly effective at preventing COVID-19 in drug users, which is consistent with the  numerical results showing lower infection rates among vaccinated individuals in this group. 
 
 
 # Overall Results and Conclusions
