@@ -271,7 +271,7 @@ gay_plot_percent +
   theme_minimal()
 ```
 
-The Barplots above shows the number of gays infected with covid. Visually gays who take the vaccine have less covid than the placebo. Visually they are very different but we need to conduct a statistical analysis to confirm if the difference is significant.
+The bar plots above display the number of gay individuals infected with COVID-19. Visually, it appears that those who received the vaccine have fewer infections compared to the placebo group. While the difference seems quite noticeable, a statistical analysis is needed to determine if the difference is statistically significant.
 
 ## Druggies
 
