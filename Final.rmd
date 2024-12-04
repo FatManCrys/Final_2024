@@ -144,7 +144,8 @@ female_summary
 ```
 
 
-There are 18328 females. 365 have covid while 17963 are OK. This isn't enough to show a trend so now let us add a barplot for a visual representation 
+There are 18328 females. 365 have covid while 17963 are OK. and 237 have placebo This isn't enough to show a trend so now let us add a barplot for a visual representation 
+
 
 
 
