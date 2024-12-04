@@ -100,7 +100,23 @@ Malefish <- fisher.test(table1)
 Malefish
 ```
 
-The main result to focus on is Fisher's Exact Test, where the p-value is extremely small (𝑝=2.2×10−16p=2.2×10 −16) or 0.00000000000000022. This means the differences in infection rates between the vaccine and placebo groups are very unlikely to have happened by chance. Because of this, we reject the null hypothesis, which says that infection rates don’t depend on the treatment. The odds ratio of about 2.82 shows that males who got the vaccine were nearly 2.8 times more likely to get COVID compared to those who got the placebo. These results suggest that the vaccine is ineffective at preventing COVID in males.
+
+The key result is Fisher's Exact Test, with a very small p-value (𝑝=2.2×10−16p=2.2×10 −16) or 0.00000000000000022. This means the differences in infection rates between the vaccine and placebo groups are very unlikely to be random. Because of this, we reject the null hypothesis, which assumes infection rates don't depend on the treatment. The odds ratio of about 2.82 shows that males who got the vaccine were nearly 2.8 times more likely to get COVID compared to those who got the placebo. These results suggest the vaccine is ineffective at preventing COVID in males.
+
+```{r}
+male_effect <- Malefish$p.value / (Malefish$p.value + 1)
+effectiveness_male <- (1 - 1 / Malefish$estimate) * 100
+print(effectiveness_male)
+
+male_low <- (1 - 1 / Malefish$conf.int[1]) * 100
+male_hi <- (1 - 1 / Malefish$conf.int[2]) * 100
+options(digits = 2)
+
+male_low
+male_hi
+```
+
+
 
 ## Females
 
