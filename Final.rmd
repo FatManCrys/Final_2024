@@ -93,9 +93,14 @@ colPerc(table1)
 The results show that among the infected males, 73.80% had taken the placebo, and 26.2% had taken the vaccine. For the healthy males, 50.01% had taken the placebo, and 49.99% had taken the vaccine. Overall, 2.82% of males who took the placebo got COVID, compared to 1.02% of those who took the vaccine. This shows that the vaccine helps reduce the chances of getting COVID. These results suggest that the vaccine is effective in lowering COVID infection rates in males, and we can support this by looking at the bar plots.
 
 ### Inferential Results
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+Malefish <- fisher.test(table1)
+Malefish
+```
 
-
-
+The main result to focus on is Fisher's Exact Test, where the p-value is extremely small (𝑝=2.2×10−16p=2.2×10 −16) or 0.00000000000000022. This means the differences in infection rates between the vaccine and placebo groups are very unlikely to have happened by chance. Because of this, we reject the null hypothesis, which says that infection rates don’t depend on the treatment. The odds ratio of about 2.82 shows that males who got the vaccine were nearly 2.8 times more likely to get COVID compared to those who got the placebo. These results suggest that the vaccine is ineffective at preventing COVID in males.
 
 ## Females
 
