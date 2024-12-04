@@ -187,6 +187,17 @@ colPerc(table2)
 
 The numerical results reveal that among the infected females, 65% had received the placebo, while 35% had received the vaccine. Among those who were not infected, 50% had taken the placebo and 50% had taken the vaccine. Overall, 2.6% of females on the placebo contracted COVID-19 compared to 1.4% on the vaccine, suggesting that the vaccine reduces infection rates. These findings indicate that the vaccine is effective in lowering COVID-19 rates in females, which is consistent with the bar plots demonstrating the vaccine's effectiveness.
 
+### Inferential Results
+```{r}
+chisq.test(table2)
+chisqtestGC(table2)
+Femalefish <- fisher.test(table2)
+Femalefish
+```
+
+
+The key result to consider is Fisher's Exact Test, which yielded an extremely small p-value (𝑝=1×10−8p=1×10 −8) or 0.00000001, suggesting that the observed differences in infection rates between the vaccine and placebo groups are highly unlikely to be due to chance. This leads to the rejection of the null hypothesis, which assumed that infection rates were independent of the treatment. The odds ratio of approximately 1.9 indicates that females who received the vaccine were nearly 1.9 times more likely to contract COVID-19 compared to those who received the placebo. These findings imply that the vaccine is ineffective at preventing COVID-19 in females.
+
 ## LGBTQ
 
 
